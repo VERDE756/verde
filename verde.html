@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>V3rd2</title>
+
+    <link rel="stylesheet" href="verde.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- CABEÇALHO -->
+    <header class="topo">
+
+        <div class="logo">
+            V3RD3
+        </div>
+
+        <nav class="menu">
+            <button data-tela="inicio">Início</button>
+            <button data-tela="anotacoes">Anotações</button>
+            <button data-tela="desenhos">Desenhos</button>
+            <button data-tela="imagens">Imagens</button>
+            <button data-tela="jogo">Mini jogo</button>
+            <button data-tela="configuracoes">Configurações</button>
+        </nav>
+
+    </header>
+
+
+    <!-- CONTEÚDO -->
+    <main class="conteudo">
+
+
+        <!-- INÍCIO -->
+        <section id="inicio" class="tela ativa">
+
+            <div class="painel principal">
+
+                <h1>V3RD3</h1>
+
+                <p class="subtitulo">
+                    Um lugar para guardar suas coisas.
+                </p>
+
+                <div class="acoes">
+
+                    <button
+                        class="botao-principal"
+                        data-tela="anotacoes">
+                        Nova anotação
+                    </button>
+
+                    <button
+                        class="botao-principal"
+                        data-tela="desenhos">
+                        Desenhar
+                    </button>
+
+                    <button
+                        class="botao-principal"
+                        data-tela="imagens">
+                        Imagens
+                    </button>
+
+                    <button
+                        class="botao-principal"
+                        data-tela="jogo">
+                        Jogar
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="painel">
+
+                <h2>Últimas coisas</h2>
+
+                <div
+                    id="ultimos-itens"
+                    class="lista-vazia">
+                    Nenhuma coisa salva ainda.
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ANOTAÇÕES -->
+        <section id="anotacoes" class="tela">
+
+            <div class="cabecalho-tela">
+
+                <div>
+                    <h1>Anotações</h1>
+
+                    <p>
+                        Escreva e guarde o que quiser.
+                    </p>
+                </div>
+
+                <button id="nova-anotacao">
+                    Nova anotação
+                </button>
+
+            </div>
+
+
+            <div class="layout-anotacoes">
+
+                <aside class="painel lista-anotacoes">
+
+                    <input
+                        type="search"
+                        id="buscaNotas"
+                        placeholder="Pesquisar..."
+                    >
+
+                    <div id="listaAnotacoes">
+
+                        <p class="lista-vazia">
+                            Nenhuma anotação.
+                        </p>
+
+                    </div>
+
+                </aside>
+
+
+                <article
+                    class="painel editor"
+                    id="editorNota">
+
+                    <input
+                        type="text"
+                        id="tituloNota"
+                        placeholder="Título"
+                    >
+
+                    <textarea
+                        id="textoNota"
+                        placeholder="Escreva aqui..."
+                    ></textarea>
+
+
+                    <div class="editor-acoes">
+
+                        <button id="salvarNota">
+                            Salvar
+                        </button>
+
+                        <button id="excluirNota">
+                            Excluir
+                        </button>
+
+                    </div>
+
+
+                    <div id="statusNota"></div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- DESENHOS -->
+        <section id="desenhos" class="tela">
+
+            <div class="cabecalho-tela">
+
+                <div>
+
+                    <h1>Desenhos</h1>
+
+                    <p>
+                        Faça seus próprios desenhos.
+                    </p>
+
+                </div>
+
+                <button id="novo-desenho">
+                    Novo desenho
+                </button>
+
+            </div>
+
+
+            <div class="painel area-desenho">
+
+                <div class="barra-desenho">
+
+                    <label>
+                        Tamanho
+
+                        <input
+                            type="range"
+                            id="tamanhoPincel"
+                            min="1"
+                            max="50"
+                            value="8"
+                        >
+                    </label>
+
+
+                    <label>
+                        Cor
+
+                        <input
+                            type="color"
+                            id="corPincel"
+                            value="#39ff72"
+                        >
+                    </label>
+
+
+                    <button id="borracha">
+                        Borracha
+                    </button>
+
+                    <button id="limparDesenho">
+                        Limpar
+                    </button>
+
+                    <button id="baixarDesenho">
+                        Baixar
+                    </button>
+
+                    <button id="salvarDesenho">
+                        Salvar desenho
+                    </button>
+
+                </div>
+
+
+                <div class="canvas-container">
+
+                    <canvas
+                        id="canvasDesenho"
+                        width="1000"
+                        height="600">
+                    </canvas>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- IMAGENS -->
+        <section id="imagens" class="tela">
+
+            <div class="cabecalho-tela">
+
+                <div>
+
+                    <h1>Imagens</h1>
+
+                    <p>
+                        Guarde suas imagens aqui.
+                    </p>
+
+                </div>
+
+
+                <label class="botao-upload">
+
+                    Adicionar imagem
+
+                    <input
+                        type="file"
+                        id="inputImagem"
+                        accept="image/*"
+                        multiple
+                        hidden
+                    >
+
+                </label>
+
+            </div>
+
+
+            <div
+                id="galeriaImagens"
+                class="galeria">
+
+                <div class="lista-vazia">
+                    Nenhuma imagem adicionada.
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- MINI JOGO -->
+        <section id="jogo" class="tela">
+
+            <div class="cabecalho-tela">
+
+                <div>
+
+                    <h1>Mini jogo</h1>
+
+                    <p>
+                        Um pequeno jogo para passar o tempo.
+                    </p>
+
+                </div>
+
+
+                <button id="iniciarJogo">
+                    Começar
+                </button>
+
+                <button id="resetarRecorde">
+                    Resetar recorde
+                </button>
+
+            </div>
+
+
+            <div class="painel jogo-painel">
+
+                <div class="placar">
+
+                    <span>
+                        Pontos:
+                        <strong id="pontosJogo">0</strong>
+                    </span>
+
+                    <span>
+                        Recorde:
+                        <strong id="recordeJogo">0</strong>
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="areaJogo"
+                    class="area-jogo">
+
+                    <div
+                        id="alvoJogo"
+                        class="alvo-jogo">
+                    </div>
+
+                </div>
+
+
+                <p id="statusJogo"></p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CONFIGURAÇÕES -->
+        <section
+            id="configuracoes"
+            class="tela">
+
+            <div class="cabecalho-tela">
+
+                <div>
+
+                    <h1>Configurações</h1>
+
+                    <p>
+                        Personalize o seu Verde.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="painel configuracoes-painel">
+
+
+                <!-- FUNDO -->
+                <div class="config-item">
+
+                    <div>
+
+                        <h3>
+                            Imagem de fundo
+                        </h3>
+
+                        <p>
+                            Escolha uma imagem para usar como fundo.
+                        </p>
+
+                    </div>
+
+
+                    <label class="botao-upload">
+
+                        Escolher imagem
+
+                        <input
+                            type="file"
+                            id="inputFundo"
+                            accept="image/*"
+                            hidden
+                        >
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- REMOVER FUNDO -->
+                <div class="config-item">
+
+                    <div>
+
+                        <h3>
+                            Remover fundo
+                        </h3>
+
+                        <p>
+                            Voltar para o fundo padrão.
+                        </p>
+
+                    </div>
+
+
+                    <button id="removerFundo">
+                        Remover
+                    </button>
+
+                </div>
+
+
+
+                <!-- BACKUP -->
+                <div class="config-item">
+
+                    <div>
+
+                        <h3>
+                            Backup
+                        </h3>
+
+                        <p>
+                            Salve ou restaure os dados do Verde.
+                        </p>
+
+                    </div>
+
+
+                    <div class="config-acoes">
+
+                        <button id="criarBackup">
+                            Criar backup
+                        </button>
+
+
+                        <button id="exportarConfiguracoes">
+                            Exportar configurações
+                        </button>
+
+
+                        <label class="botao-upload">
+
+                            Restaurar backup
+
+                            <input
+                                type="file"
+                                id="inputBackup"
+                                accept=".json,application/json"
+                                hidden
+                            >
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- APAGAR DADOS -->
+                <div class="config-item">
+
+                    <div>
+
+                        <h3>
+                            Dados
+                        </h3>
+
+                        <p>
+                            Apagar todos os dados salvos do Verde.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="apagarDados"
+                        class="botao-perigo">
+
+                        Apagar tudo
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+
+        <span>
+            VERDE
+        </span>
+
+        <span id="status">
+            Tudo salvo localmente
+        </span>
+
+    </footer>
+
+</div>
+
+
+
+<!-- MODAL DE NOVA ANOTAÇÃO -->
+<div
+    id="modalAnotacao"
+    class="modal"
+    hidden>
+
+    <div class="modal-conteudo">
+
+        <button
+            id="fecharModal"
+            class="fechar"
+            aria-label="Fechar">
+
+            X
+
+        </button>
+
+
+        <h2>
+            Nova anotação
+        </h2>
+
+
+        <input
+            type="text"
+            id="modalTitulo"
+            placeholder="Título"
+        >
+
+
+        <textarea
+            id="modalTexto"
+            placeholder="Escreva sua anotação..."
+        ></textarea>
+
+
+        <button id="criarAnotacao">
+            Criar
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- VISUALIZADOR DE IMAGEM -->
+<div
+    id="modalImagem"
+    class="modal"
+    hidden>
+
+    <div class="visualizador-conteudo">
+
+        <button
+            id="fecharVisualizador"
+            class="fechar"
+            aria-label="Fechar">
+
+            X
+
+        </button>
+
+
+        <img
+            id="imagemVisualizacao"
+            src=""
+            alt="Imagem selecionada"
+        >
+
+    </div>
+
+</div>
+
+<details><summary>123</summary> 1 </details> 
+
+
+
+<!-- TODOS OS SISTEMAS DO VERDE -->
+
+<script src="verde.config.js"></script>
+
+<script src="verde.cursor.js"></script>
+
+<script src="verde.tema.js"></script>
+
+<script src="verde.notas.js"></script>
+
+<script src="verde.imagens.js"></script>
+
+<script src="verde.desenho.js"></script>
+
+<script src="verde.jogo.js"></script>
+
+<script src="verde.backup.js"></script>
+
+<script src="verde.js"></script>
+
+
+</body>
+</html>

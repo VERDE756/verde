@@ -1,0 +1,23 @@
+{
+  "name": "verde",
+  "version": "1.0.0",
+  "description": "Aplicativo pessoal de anotações, desenhos, imagens e mini jogos.",
+  "main": "verde.server.cjs",
+  "scripts": {
+    "start": "node verde.server.cjs",
+    "test": "node verde.tests/verde.test.cjs"
+  },
+  "keywords": [
+    "verde",
+    "notas",
+    "desenho",
+    "imagens",
+    "jogo"
+  ],
+  "author": "",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  }
+}
